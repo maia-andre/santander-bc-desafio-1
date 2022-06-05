@@ -1,0 +1,741 @@
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"/><title>Conceitos de programação </title><style>
+/* cspell:disable-file */
+/* webkit printing magic: print all background colors */
+html {
+	-webkit-print-color-adjust: exact;
+}
+* {
+	box-sizing: border-box;
+	-webkit-print-color-adjust: exact;
+}
+
+html,
+body {
+	margin: 0;
+	padding: 0;
+}
+@media only screen {
+	body {
+		margin: 2em auto;
+		max-width: 900px;
+		color: rgb(55, 53, 47);
+	}
+}
+
+body {
+	line-height: 1.5;
+	white-space: pre-wrap;
+}
+
+a,
+a.visited {
+	color: inherit;
+	text-decoration: underline;
+}
+
+.pdf-relative-link-path {
+	font-size: 80%;
+	color: #444;
+}
+
+h1,
+h2,
+h3 {
+	letter-spacing: -0.01em;
+	line-height: 1.2;
+	font-weight: 600;
+	margin-bottom: 0;
+}
+
+.page-title {
+	font-size: 2.5rem;
+	font-weight: 700;
+	margin-top: 0;
+	margin-bottom: 0.75em;
+}
+
+h1 {
+	font-size: 1.875rem;
+	margin-top: 1.875rem;
+}
+
+h2 {
+	font-size: 1.5rem;
+	margin-top: 1.5rem;
+}
+
+h3 {
+	font-size: 1.25rem;
+	margin-top: 1.25rem;
+}
+
+.source {
+	border: 1px solid #ddd;
+	border-radius: 3px;
+	padding: 1.5em;
+	word-break: break-all;
+}
+
+.callout {
+	border-radius: 3px;
+	padding: 1rem;
+}
+
+figure {
+	margin: 1.25em 0;
+	page-break-inside: avoid;
+}
+
+figcaption {
+	opacity: 0.5;
+	font-size: 85%;
+	margin-top: 0.5em;
+}
+
+mark {
+	background-color: transparent;
+}
+
+.indented {
+	padding-left: 1.5em;
+}
+
+hr {
+	background: transparent;
+	display: block;
+	width: 100%;
+	height: 1px;
+	visibility: visible;
+	border: none;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.09);
+}
+
+img {
+	max-width: 100%;
+}
+
+@media only print {
+	img {
+		max-height: 100vh;
+		object-fit: contain;
+	}
+}
+
+@page {
+	margin: 1in;
+}
+
+.collection-content {
+	font-size: 0.875rem;
+}
+
+.column-list {
+	display: flex;
+	justify-content: space-between;
+}
+
+.column {
+	padding: 0 1em;
+}
+
+.column:first-child {
+	padding-left: 0;
+}
+
+.column:last-child {
+	padding-right: 0;
+}
+
+.table_of_contents-item {
+	display: block;
+	font-size: 0.875rem;
+	line-height: 1.3;
+	padding: 0.125rem;
+}
+
+.table_of_contents-indent-1 {
+	margin-left: 1.5rem;
+}
+
+.table_of_contents-indent-2 {
+	margin-left: 3rem;
+}
+
+.table_of_contents-indent-3 {
+	margin-left: 4.5rem;
+}
+
+.table_of_contents-link {
+	text-decoration: none;
+	opacity: 0.7;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.18);
+}
+
+table,
+th,
+td {
+	border: 1px solid rgba(55, 53, 47, 0.09);
+	border-collapse: collapse;
+}
+
+table {
+	border-left: none;
+	border-right: none;
+}
+
+th,
+td {
+	font-weight: normal;
+	padding: 0.25em 0.5em;
+	line-height: 1.5;
+	min-height: 1.5em;
+	text-align: left;
+}
+
+th {
+	color: rgba(55, 53, 47, 0.6);
+}
+
+ol,
+ul {
+	margin: 0;
+	margin-block-start: 0.6em;
+	margin-block-end: 0.6em;
+}
+
+li > ol:first-child,
+li > ul:first-child {
+	margin-block-start: 0.6em;
+}
+
+ul > li {
+	list-style: disc;
+}
+
+ul.to-do-list {
+	text-indent: -1.7em;
+}
+
+ul.to-do-list > li {
+	list-style: none;
+}
+
+.to-do-children-checked {
+	text-decoration: line-through;
+	opacity: 0.375;
+}
+
+ul.toggle > li {
+	list-style: none;
+}
+
+ul {
+	padding-inline-start: 1.7em;
+}
+
+ul > li {
+	padding-left: 0.1em;
+}
+
+ol {
+	padding-inline-start: 1.6em;
+}
+
+ol > li {
+	padding-left: 0.2em;
+}
+
+.mono ol {
+	padding-inline-start: 2em;
+}
+
+.mono ol > li {
+	text-indent: -0.4em;
+}
+
+.toggle {
+	padding-inline-start: 0em;
+	list-style-type: none;
+}
+
+/* Indent toggle children */
+.toggle > li > details {
+	padding-left: 1.7em;
+}
+
+.toggle > li > details > summary {
+	margin-left: -1.1em;
+}
+
+.selected-value {
+	display: inline-block;
+	padding: 0 0.5em;
+	background: rgba(206, 205, 202, 0.5);
+	border-radius: 3px;
+	margin-right: 0.5em;
+	margin-top: 0.3em;
+	margin-bottom: 0.3em;
+	white-space: nowrap;
+}
+
+.collection-title {
+	display: inline-block;
+	margin-right: 1em;
+}
+
+.simple-table {
+	margin-top: 1em;
+	font-size: 0.875rem;
+	empty-cells: show;
+}
+.simple-table td {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table th {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table-header-color {
+	background: rgb(247, 246, 243);
+	color: black;
+}
+.simple-table-header {
+	font-weight: 500;
+}
+
+time {
+	opacity: 0.5;
+}
+
+.icon {
+	display: inline-block;
+	max-width: 1.2em;
+	max-height: 1.2em;
+	text-decoration: none;
+	vertical-align: text-bottom;
+	margin-right: 0.5em;
+}
+
+img.icon {
+	border-radius: 3px;
+}
+
+.user-icon {
+	width: 1.5em;
+	height: 1.5em;
+	border-radius: 100%;
+	margin-right: 0.5rem;
+}
+
+.user-icon-inner {
+	font-size: 0.8em;
+}
+
+.text-icon {
+	border: 1px solid #000;
+	text-align: center;
+}
+
+.page-cover-image {
+	display: block;
+	object-fit: cover;
+	width: 100%;
+	max-height: 30vh;
+}
+
+.page-header-icon {
+	font-size: 3rem;
+	margin-bottom: 1rem;
+}
+
+.page-header-icon-with-cover {
+	margin-top: -0.72em;
+	margin-left: 0.07em;
+}
+
+.page-header-icon img {
+	border-radius: 3px;
+}
+
+.link-to-page {
+	margin: 1em 0;
+	padding: 0;
+	border: none;
+	font-weight: 500;
+}
+
+p > .user {
+	opacity: 0.5;
+}
+
+td > .user,
+td > time {
+	white-space: nowrap;
+}
+
+input[type="checkbox"] {
+	transform: scale(1.5);
+	margin-right: 0.6em;
+	vertical-align: middle;
+}
+
+p {
+	margin-top: 0.5em;
+	margin-bottom: 0.5em;
+}
+
+.image {
+	border: none;
+	margin: 1.5em 0;
+	padding: 0;
+	border-radius: 0;
+	text-align: center;
+}
+
+.code,
+code {
+	background: rgba(135, 131, 120, 0.15);
+	border-radius: 3px;
+	padding: 0.2em 0.4em;
+	border-radius: 3px;
+	font-size: 85%;
+	tab-size: 2;
+}
+
+code {
+	color: #eb5757;
+}
+
+.code {
+	padding: 1.5em 1em;
+}
+
+.code-wrap {
+	white-space: pre-wrap;
+	word-break: break-all;
+}
+
+.code > code {
+	background: none;
+	padding: 0;
+	font-size: 100%;
+	color: inherit;
+}
+
+blockquote {
+	font-size: 1.25em;
+	margin: 1em 0;
+	padding-left: 1em;
+	border-left: 3px solid rgb(55, 53, 47);
+}
+
+.bookmark {
+	text-decoration: none;
+	max-height: 8em;
+	padding: 0;
+	display: flex;
+	width: 100%;
+	align-items: stretch;
+}
+
+.bookmark-title {
+	font-size: 0.85em;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	height: 1.75em;
+	white-space: nowrap;
+}
+
+.bookmark-text {
+	display: flex;
+	flex-direction: column;
+}
+
+.bookmark-info {
+	flex: 4 1 180px;
+	padding: 12px 14px 14px;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+}
+
+.bookmark-image {
+	width: 33%;
+	flex: 1 1 180px;
+	display: block;
+	position: relative;
+	object-fit: cover;
+	border-radius: 1px;
+}
+
+.bookmark-description {
+	color: rgba(55, 53, 47, 0.6);
+	font-size: 0.75em;
+	overflow: hidden;
+	max-height: 4.5em;
+	word-break: break-word;
+}
+
+.bookmark-href {
+	font-size: 0.75em;
+	margin-top: 0.25em;
+}
+
+.sans { font-family: ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol"; }
+.code { font-family: "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace; }
+.serif { font-family: Lyon-Text, Georgia, ui-serif, serif; }
+.mono { font-family: iawriter-mono, Nitti, Menlo, Courier, monospace; }
+.pdf .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK JP'; }
+.pdf:lang(zh-CN) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK SC'; }
+.pdf:lang(zh-TW) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK TC'; }
+.pdf:lang(ko-KR) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK KR'; }
+.pdf .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.pdf .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK JP'; }
+.pdf:lang(zh-CN) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK SC'; }
+.pdf:lang(zh-TW) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK TC'; }
+.pdf:lang(ko-KR) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK KR'; }
+.pdf .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.highlight-default {
+	color: rgba(55, 53, 47, 1);
+}
+.highlight-gray {
+	color: rgba(120, 119, 116, 1);
+	fill: rgba(120, 119, 116, 1);
+}
+.highlight-brown {
+	color: rgba(159, 107, 83, 1);
+	fill: rgba(159, 107, 83, 1);
+}
+.highlight-orange {
+	color: rgba(217, 115, 13, 1);
+	fill: rgba(217, 115, 13, 1);
+}
+.highlight-yellow {
+	color: rgba(203, 145, 47, 1);
+	fill: rgba(203, 145, 47, 1);
+}
+.highlight-teal {
+	color: rgba(68, 131, 97, 1);
+	fill: rgba(68, 131, 97, 1);
+}
+.highlight-blue {
+	color: rgba(51, 126, 169, 1);
+	fill: rgba(51, 126, 169, 1);
+}
+.highlight-purple {
+	color: rgba(144, 101, 176, 1);
+	fill: rgba(144, 101, 176, 1);
+}
+.highlight-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.highlight-red {
+	color: rgba(212, 76, 71, 1);
+	fill: rgba(212, 76, 71, 1);
+}
+.highlight-gray_background {
+	background: rgba(241, 241, 239, 1);
+}
+.highlight-brown_background {
+	background: rgba(244, 238, 238, 1);
+}
+.highlight-orange_background {
+	background: rgba(251, 236, 221, 1);
+}
+.highlight-yellow_background {
+	background: rgba(251, 243, 219, 1);
+}
+.highlight-teal_background {
+	background: rgba(237, 243, 236, 1);
+}
+.highlight-blue_background {
+	background: rgba(231, 243, 248, 1);
+}
+.highlight-purple_background {
+	background: rgba(244, 240, 247, 0.8);
+}
+.highlight-pink_background {
+	background: rgba(249, 238, 243, 0.8);
+}
+.highlight-red_background {
+	background: rgba(253, 235, 236, 1);
+}
+.block-color-default {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray {
+	color: rgba(120, 119, 116, 1);
+	fill: rgba(120, 119, 116, 1);
+}
+.block-color-brown {
+	color: rgba(159, 107, 83, 1);
+	fill: rgba(159, 107, 83, 1);
+}
+.block-color-orange {
+	color: rgba(217, 115, 13, 1);
+	fill: rgba(217, 115, 13, 1);
+}
+.block-color-yellow {
+	color: rgba(203, 145, 47, 1);
+	fill: rgba(203, 145, 47, 1);
+}
+.block-color-teal {
+	color: rgba(68, 131, 97, 1);
+	fill: rgba(68, 131, 97, 1);
+}
+.block-color-blue {
+	color: rgba(51, 126, 169, 1);
+	fill: rgba(51, 126, 169, 1);
+}
+.block-color-purple {
+	color: rgba(144, 101, 176, 1);
+	fill: rgba(144, 101, 176, 1);
+}
+.block-color-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.block-color-red {
+	color: rgba(212, 76, 71, 1);
+	fill: rgba(212, 76, 71, 1);
+}
+.block-color-gray_background {
+	background: rgba(241, 241, 239, 1);
+}
+.block-color-brown_background {
+	background: rgba(244, 238, 238, 1);
+}
+.block-color-orange_background {
+	background: rgba(251, 236, 221, 1);
+}
+.block-color-yellow_background {
+	background: rgba(251, 243, 219, 1);
+}
+.block-color-teal_background {
+	background: rgba(237, 243, 236, 1);
+}
+.block-color-blue_background {
+	background: rgba(231, 243, 248, 1);
+}
+.block-color-purple_background {
+	background: rgba(244, 240, 247, 0.8);
+}
+.block-color-pink_background {
+	background: rgba(249, 238, 243, 0.8);
+}
+.block-color-red_background {
+	background: rgba(253, 235, 236, 1);
+}
+.select-value-color-pink { background-color: rgba(245, 224, 233, 1); }
+.select-value-color-purple { background-color: rgba(232, 222, 238, 1); }
+.select-value-color-green { background-color: rgba(219, 237, 219, 1); }
+.select-value-color-gray { background-color: rgba(227, 226, 224, 1); }
+.select-value-color-opaquegray { background-color: rgba(255, 255, 255, 0.0375); }
+.select-value-color-orange { background-color: rgba(250, 222, 201, 1); }
+.select-value-color-brown { background-color: rgba(238, 224, 218, 1); }
+.select-value-color-red { background-color: rgba(255, 226, 221, 1); }
+.select-value-color-yellow { background-color: rgba(253, 236, 200, 1); }
+.select-value-color-blue { background-color: rgba(211, 229, 239, 1); }
+
+.checkbox {
+	display: inline-flex;
+	vertical-align: text-bottom;
+	width: 16;
+	height: 16;
+	background-size: 16px;
+	margin-left: 2px;
+	margin-right: 5px;
+}
+
+.checkbox-on {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20width%3D%2216%22%20height%3D%2216%22%20fill%3D%22%2358A9D7%22%2F%3E%0A%3Cpath%20d%3D%22M6.71429%2012.2852L14%204.9995L12.7143%203.71436L6.71429%209.71378L3.28571%206.2831L2%207.57092L6.71429%2012.2852Z%22%20fill%3D%22white%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+
+.checkbox-off {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20x%3D%220.75%22%20y%3D%220.75%22%20width%3D%2214.5%22%20height%3D%2214.5%22%20fill%3D%22white%22%20stroke%3D%22%2336352F%22%20stroke-width%3D%221.5%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+	
+</style></head><body><article id="28010127-6937-48c5-b85a-854151cf215b" class="page sans"><header><div class="page-header-icon undefined"><img class="icon" src="data:image/png;base64,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"/></div><h1 class="page-title">Conceitos de programação </h1></header><div class="page-body"><p id="a4fd15db-92df-4b38-98e7-7468b38f5768" class="">
+</p><p id="69d462d2-758e-41e6-ac4b-2811c107a685" class=""><span style="border-bottom:0.05em solid">Aula 1 Pensamento computacional</span></p><p id="ca0f3dc2-c947-4eb9-9f19-fdb3ab269678" class="">
+</p><p id="6426ead0-05b8-4035-8bbc-f63a050535ba" class="">Pilar: Decomposição</p><p id="a218acba-4ddb-49e2-9b62-3bca5057ce0f" class="">
+</p><p id="b9b7a36f-3aad-4378-accd-a81315f212da" class="">Dado um problema complexo, devemos decompor o problema em problemas menores, de modo que fique mais fácil resolvê-los.</p><p id="eb679b36-6b20-40e0-9e1d-719e817ebe91" class="">A ordem de resolução dos problemas menores pode ser em sequência ou paralela, dependendo se o problema é dependente entre eles ou não. </p><p id="a39dc820-ddeb-4552-b4f9-e964e6372bdb" class="">Praticar maneiras distintas de decompor o mesmo problema.</p><p id="103c618a-f2b8-4d11-9208-edc3e2f2df17" class="">
+</p><p id="8661f2f4-f649-48fb-822f-1e41c1838e5b" class="">Pilar: Padrões</p><p id="7f356efb-58e5-4f33-a104-6a3a38d582e7" class="">
+</p><p id="6bcb834e-5032-482d-b9ac-acd24fe09b07" class="">Um dos motivos para determinar padrões é generalizar uma solução para diferentes problemas, similares, de modo a ter resoluções padronizadas e mais ágeis para serem utilizadas.</p><p id="344188b2-c9a1-45e8-9a59-64acad8c17c6" class="">
+</p><p id="1c557e8a-eac0-45c5-838a-96c6e4c288e3" class="">Aplicações + comuns:</p><ul id="824fd232-8e88-43c3-a596-d64f273efb25" class="bulleted-list"><li style="list-style-type:disc">Classificação de dados</li></ul><ul id="aa3ec8fb-71ba-40c2-a837-94df3cd45ba1" class="bulleted-list"><li style="list-style-type:disc">Reconhecimento de imagens</li></ul><ul id="51fb14e7-4da3-4e37-9120-8f7f018892be" class="bulleted-list"><li style="list-style-type:disc">Reconhecimento de fala</li></ul><ul id="50d3323f-1f1e-4b29-b3af-7251b4462926" class="bulleted-list"><li style="list-style-type:disc">Análise de cenas</li></ul><ul id="6d604983-4a71-4fa1-9898-7253cfacc774" class="bulleted-list"><li style="list-style-type:disc">Classificação de documentos </li></ul><p id="4c148385-170f-4e9b-82c3-0643a3375a32" class="">
+</p><p id="fea85959-90f1-42a0-a37b-13375ea4cf3c" class="">Pilar: Abstração</p><p id="b8eba49c-5458-44c9-b462-0c6617c66c53" class="">
+</p><p id="c5b170b3-aae7-4b89-9ce4-35c865682417" class="">Abstrair/Generalizar é  tornar algo mais amplo, geral, determinar um conjunto de elementos ou objetos numa classe mais ampla.</p><p id="708f776b-34d5-4853-91e4-2cf35acd1d12" class="">
+</p><p id="d7915ec8-b74d-4867-8022-2208cfed2532" class="">A forma para classificar esses dados é por meio dos pontos essenciais e características. De forma que o que é item de detalhamento fica de fora da análise.</p><p id="6bc67c88-1ed8-4ab3-8a04-df9b521a7382" class="">
+</p><p id="34189a61-958c-44cf-b13b-2c1837c34219" class="">Pilar: Algoritmos</p><p id="bdc514cd-ac38-4b7d-a0f5-e18bfca2cb05" class="">
+</p><p id="7ed58ba8-3cbf-41ca-ab08-3649cf70dd7d" class="">O processo de resolução de problemas usando algoritmos é chamado de step by step. É o processo de instruções que diz o que fazer, como fazer e quando fazer.</p><p id="8e246108-2732-46d0-a571-abb3461360de" class="">
+</p><p id="2d6b81c0-2fef-429b-be02-f0063136df5c" class=""><strong>Estudo de caso conceitual - Perdido na floresta</strong></p><p id="6393ca3c-5fd9-4c9a-b035-aee2c8f9289c" class="">
+</p><p id="088cb30e-f7cf-4eea-83fc-b7e71ea86b7c" class="">Sobrevivência </p><ul id="c832a971-c724-4393-8c48-77e0de270c50" class="bulleted-list"><li style="list-style-type:disc">Identificar mecanismos</li></ul><ul id="40ec74af-76b4-4b75-a8c0-45b7720b0721" class="bulleted-list"><li style="list-style-type:disc">Recursos comuns</li></ul><ul id="b1104bfc-22a4-4cbc-9095-4a63aab9f537" class="bulleted-list"><li style="list-style-type:disc">Detalhes mais importantes </li></ul><p id="bbcbf5ef-1c7f-475e-b83d-890dc16ecd0a" class="">
+</p><figure id="cf1c721d-e4e6-4b64-a7a4-d31075941e92" class="image"><a href="Conceitos%20de%20programac%CC%A7a%CC%83o%20cf1c721de4e64b64a7a4d31075941e92/image-1653853369483.jpg350421849011310498.jpg"><img style="width:4000px" src="Conceitos%20de%20programac%CC%A7a%CC%83o%20cf1c721de4e64b64a7a4d31075941e92/image-1653853369483.jpg350421849011310498.jpg"/></a></figure><p id="68d22022-fb7d-4c29-9a9d-bcd5de2233f4" class="">
+</p><p id="3fdc4261-529b-4f99-bc2a-30a72b1d3c7a" class="">Abstraindo o problema maior - sobrevivência - chegamos em padrões, como o fogo, que se repete em mais de uma solução.</p><p id="b07c28c6-84f4-4145-b54c-f53b20e353d2" class="">
+</p><p id="8ee2aa6e-9a00-42e4-81d3-cf4aaa4cbd64" class="">Podemos aplicar um algoritmo em algumas das etapas de sobrevivência para criar um fluxo de tarefas a serem seguidas para a resolução do problema.</p><p id="42ddd7fd-2b38-4ad0-89a8-8c4e01f243d0" class="">
+</p><figure id="fe244b29-7969-4a8d-9ba4-95cd894e1241" class="image"><a href="Conceitos%20de%20programac%CC%A7a%CC%83o%20cf1c721de4e64b64a7a4d31075941e92/image-1653853616757.jpg3167499648167273024.jpg"><img style="width:4000px" src="Conceitos%20de%20programac%CC%A7a%CC%83o%20cf1c721de4e64b64a7a4d31075941e92/image-1653853616757.jpg3167499648167273024.jpg"/></a></figure><p id="6c7fa2ee-8185-4d18-a975-c32e40cdb804" class="">
+</p><p id="6cb9b538-84ac-4f7a-bb6d-fc692e0c970d" class="">Como aprimorar a habilidade de pensamento computacional?</p><p id="74b0fa95-bfe9-469e-b36a-e2a8a9d2b20e" class="">Permitindo que o aluno explique suas decisões e seu processo de desenvolvimento.</p><p id="800fb6a8-5f82-4ec1-bc4a-bcbe7c6c80f0" class="">
+</p><p id="1c71f825-e735-4847-af99-a382576cde74" class=""><span style="border-bottom:0.05em solid">Aula 2 Lógica de Programação</span></p><p id="47b53a3d-f190-4676-a24c-7bc716b6def2" class="">
+</p><p id="a00250ec-e91a-4053-8f73-f3eb98ebaf85" class="">Organização e planejamento das instruções, assertivas em um algoritmo, a fim de viabilizar a implantação de um programa.</p><p id="f22bd9f8-2652-49ca-bf76-659970bb71b2" class="">
+</p><p id="8d202320-d645-43aa-ad3d-37ea5112d571" class=""><strong>Técnica linear</strong></p><p id="bb6bdaee-ee59-4f94-a3bf-fe67b8d60bf6" class="">
+</p><p id="b9cb2121-bd28-4e2c-8f5b-e5751b672133" class="">Recursos limitados</p><p id="89313c1a-ac2d-4cf8-8a0f-6fabcaffef38" class="">Execução sequênciada</p><p id="c3107b2e-55db-439f-bcc0-0c646b601454" class="">Única dimensão</p><p id="005c3d5b-c48f-4d96-97c9-c554de176781" class="">Ordenação de elementos por uma única propriedade </p><p id="2f927727-acb2-4a91-b3d6-86eba5950a96" class="">
+</p><p id="77609017-0d94-4ec2-a508-c677f601c35e" class=""><strong>Técnica estruturada</strong></p><p id="8a65e610-2ec8-4e7e-a804-b049e2dc8495" class="">
+</p><p id="a6236586-e7a1-47d2-ae10-494b71198092" class="">Pode ter mais de uma opção, não linear</p><p id="cc411801-ffd7-434b-966f-8f775cce922d" class="">Geralmente mais complexa, porém com mais vantagens</p><p id="1ebd7560-ab26-42ca-b5ec-2346a0f3fc49" class="">
+</p><p id="a8618fe5-1161-413c-8dbf-5800a99ab0e5" class=""><strong>Técnica modular</strong></p><p id="4bd627df-b828-4bcf-819a-41d141ce8748" class="">
+</p><p id="3b8556a6-d1ee-4385-8074-4b138f806e8d" class="">Partes independentes</p><p id="4f8458c9-fc20-4321-8618-16a380e10d1f" class="">Definição de metas, Abstração e separação por módulos.</p><p id="d836a618-34b3-4e22-bc8c-fec156d6aace" class="">
+</p><p id="b3af32fe-d1cb-41e2-a8b3-f5448a09b8c2" class="">Aula 3 Fundamentos de Algoritmos</p><p id="6d093715-895e-4efc-aa4c-4669a6769c69" class="">
+</p><p id="2691941c-41d4-4c5e-bcdb-303155be1bfb" class=""><span style="border-bottom:0.05em solid"><strong>Tipologia e Variáveis </strong></span></p><p id="7146be23-8180-4192-8885-dd42bbe27ded" class="">
+</p><p id="dc920c41-9fdc-4b58-ab06-2f2615ca2081" class="">Tipos de dados</p><ul id="09641613-a687-4efb-aa03-ef3e6b499619" class="bulleted-list"><li style="list-style-type:disc">Numéricos<ul id="0825b81e-5363-43de-acf8-aeae6d256153" class="bulleted-list"><li style="list-style-type:circle">Inteiros - positivos ou negativos</li></ul><ul id="adbe2b8e-e001-4953-90d6-53c63e3dba42" class="bulleted-list"><li style="list-style-type:circle">Reais - positivos ou negativos com casas decimais </li></ul></li></ul><ul id="c85546ba-e05b-435c-8daa-8ae4c5b63004" class="bulleted-list"><li style="list-style-type:disc">Caracteres<ul id="4320d152-a0ae-41b6-b186-4cb7df469963" class="bulleted-list"><li style="list-style-type:circle">Qualquer dado fora da classe numérica</li></ul></li></ul><ul id="8261abb1-495d-4580-890b-d35ec6d32b81" class="bulleted-list"><li style="list-style-type:disc">Lógico<ul id="39ca9674-959b-49ca-95c7-2033fe69b93c" class="bulleted-list"><li style="list-style-type:circle">Booleano</li></ul><p id="74f2ef94-12fb-4f32-8c51-352ce9c70422" class="">
+</p></li></ul><p id="d3d63115-3435-4127-a828-69212592d92e" class="">Variável - É um tipo de estrutura mutável, que varia dentro do seu valor; Ela é inconstante; Pode ser sobrescrito; Mutável.</p><p id="6463c7e9-b601-4060-acd8-dca7c0ea0de1" class="">
+</p><p id="0d9a1ac3-5ecf-4d76-aeef-7d3473a79f17" class="">Pode receber qualquer valor de um determinado conjunto de valores, mas não pode diferir do tipo definido. Ex: Duas variáveis do tipo string não podem gerar uma variável do tipo numérico.</p><p id="c2c02c67-81de-429c-8eb8-b48d2276168c" class="">
+</p><p id="fec9b254-54aa-44b8-9c57-371e3df08bf0" class="">Regras para definição de nome de variável</p><ol type="1" id="916e8786-bd9f-4705-920f-0bcb9ba21680" class="numbered-list" start="1"><li>Atribuição de um mais caracteres</li></ol><ol type="1" id="1df3cf22-e25b-4198-a184-f1178a2ff74b" class="numbered-list" start="2"><li>Primeira letra - não número</li></ol><ol type="1" id="f712ab24-ffa2-43dd-937c-9d88143449b1" class="numbered-list" start="3"><li>Sem espaços em branco</li></ol><ol type="1" id="11f16ddb-69f3-4c9a-b10d-0373baf2e26c" class="numbered-list" start="4"><li>Não pode utilizar palavras reservadas da linguagem utilizada. Ex.: Em Javascript, voce não pode definir uma variável com a palavra let pois ela é reservada para a linguagem definir variáveis.</li></ol><p id="00dc3490-7f86-4697-aa32-119d7de0d5b7" class="">
+</p><p id="48434c12-9eea-4cc2-b705-0eedbe14eb24" class="">Uma constante é um tipo de variável inalterável.</p><p id="b06351f7-e363-4a79-8f89-85a16a819ba0" class="">
+</p><p id="b9320601-a68e-41de-a74d-f0e872886304" class=""><span style="border-bottom:0.05em solid"><strong>Instruções primitivas </strong></span></p><p id="b07fcf86-ab8d-4ccd-a88c-a90901b92897" class="">
+</p><figure id="32844497-23ac-4797-8d8f-c7e449ad3bb2" class="image"><a href="https://www.notion.so"><img style="width:4000px" src="https://www.notion.so"/></a></figure><p id="5abdf2ed-c1ac-4e09-bea0-f5fc2601613a" class="">
+</p><p id="fa42d0e8-4c7c-47db-9109-0364840890cf" class=""><span style="border-bottom:0.05em solid"><strong>Estruturas condicionais e operadores</strong></span></p><p id="628baf0f-46ca-4ed0-b9ae-8897ed5bb3c9" class="">
+</p><p id="ee373983-3fe6-44a7-a93b-2cae3fadef2a" class="">Modelo de estrutura condicional </p><figure id="a55d0c80-5945-4ba6-bd36-2626647f01f7" class="image"><a href="Conceitos%20de%20programac%CC%A7a%CC%83o%20cf1c721de4e64b64a7a4d31075941e92/image-1654377818526.jpg1392689151499858787.jpg"><img style="width:4000px" src="Conceitos%20de%20programac%CC%A7a%CC%83o%20cf1c721de4e64b64a7a4d31075941e92/image-1654377818526.jpg1392689151499858787.jpg"/></a></figure><p id="43644f59-bf8a-406c-9d15-d9b506df2b7e" class="">
+</p><p id="eeddd405-7a9d-401f-94b6-7026257bd9fb" class="">Operadores relacionais</p><p id="843499e7-52c6-42c2-b965-10e5a3fa9532" class="">
+</p><figure id="683c565d-2144-4f36-ac1e-70fc9d2566bf" class="image"><a href="Conceitos%20de%20programac%CC%A7a%CC%83o%20cf1c721de4e64b64a7a4d31075941e92/image-1654378677535.jpg3426089817089569455.jpg"><img style="width:4000px" src="Conceitos%20de%20programac%CC%A7a%CC%83o%20cf1c721de4e64b64a7a4d31075941e92/image-1654378677535.jpg3426089817089569455.jpg"/></a></figure><p id="6fae92af-3b71-493b-a009-2965ee5867b6" class="">
+</p><p id="3e4693ab-6201-4f96-9fab-e7c596ee08a1" class="">Operadores lógicos</p><p id="e345b688-44ac-4f9e-8ef3-3d317b786e53" class="">
+</p><p id="55645e75-5912-49f5-891e-ae46b0942641" class="">AND, OR e NOT</p><p id="071ad7b2-dc9f-4dbd-a51e-ea09dd280be4" class="">
+</p><p id="7ac80d01-255a-4be1-be15-d5d0099dc258" class=""><span style="border-bottom:0.05em solid"><strong>Estruturas de repetição </strong></span></p><p id="37861c02-a9f6-472c-9e72-6765ada3d96e" class="">
+</p><p id="cd20cf02-9617-413e-9b53-fe0c67062bcc" class="">Laços, controle de fluxo, malhas de repetição e loop, são termos ligados a estruturas de repetição.</p><p id="90469c73-4b10-4259-b658-6d51b909335b" class="">
+</p><p id="ad71c815-29f2-4918-91ce-4e1a04ef3483" class="">Condições de parado são definidas para evitar um loop infinito da estrutura de repetição.</p><p id="6ddb98b1-f1b7-4fa6-a0ca-2fb5a96214e7" class="">
+</p><p id="769bdf4a-107d-4b76-b5b8-8c861b5638a1" class="">Utilizar a estrutura de repetição acarreta na redução de linhas, facilidade em dar manutenção no código, redução de erros.</p><p id="b21c5fa7-ee5c-4313-b3f7-715c895cdcb8" class="">
+</p><p id="2289ee10-1b02-43b8-b4cb-f713fa591eb9" class="">Exemplos:</p><p id="517214c2-4047-4db5-ac0a-a298773b0ee8" class="">Enquanto ...faça</p><p id="e786583f-2122-4c4e-b75c-917120389eb6" class="">Repita…até</p><p id="0373ee5a-c687-4cb8-9478-a432703293c7" class="">Pare… De … até …faça </p><p id="f1a732c2-6b06-480f-8bf0-24d2b81ab0da" class="">
+</p><p id="8220b607-9683-4840-8764-16db3db3d167" class="">Há possibilidade de usar uma estrutura condicional dentro de uma estrutura de repetição (e vice versa)</p><p id="5536d56f-3c0e-4b59-a020-e0300d90d11b" class="">
+</p><p id="ec9b7d28-788b-466e-a733-78157655864e" class=""><span style="border-bottom:0.05em solid"><strong>Vetores e matrizes</strong></span></p><p id="12def35e-0664-477c-abbe-5ac2d589eada" class="">
+</p><p id="07833bce-379b-4254-aa65-47dcfa61d244" class=""><strong>Vetor</strong></p><p id="42a617fb-8c54-4faf-8754-91ff850f2071" class="">Definição formal: “Um vetor é caracterizado por uma variável dimensionada com tamanho pré-fixado.”</p><p id="b471cecb-0eac-42bd-9beb-36264b7c3de8" class="">
+</p><p id="0ce50706-09b8-4ab8-b6db-dcfe5a8ffa78" class="">Vetor é uma sequência de <em>(tipo de)</em> dados.</p><p id="b85818e8-2bb8-4f8c-91dc-5d9f6cf476ca" class="">
+</p><p id="044c3d1a-35b9-4f72-bb52-d459fbcbbf71" class=""><strong>Matriz</strong></p><p id="1f18b6d3-89a7-4a16-8a58-9d128b6b160a" class="">Definição formal: “Matriz é uma tabela organizada em linhas e colunas no formato m x n, onde <strong>m</strong> representa o número de linhas (horizontal) e <strong>n</strong> o número de colunas (vertical).”</p><p id="63fa33d2-b3ce-44a3-85b2-f58e38edc814" class="">
+</p><p id="88732d41-0117-4db3-84ec-2b6c8b5f9b77" class=""><span style="border-bottom:0.05em solid"><strong>Funções</strong></span></p><p id="05a77f82-1ed5-4311-851b-7689a1c8287e" class="">
+</p><p id="cd9f2360-7b03-4afe-8d3a-212bfb753fa2" class="">Similar ao conceito de função matemática.</p><p id="697b3e37-4266-48aa-9954-c98a9a4e193b" class="">A partir de um elemento A que é recebido na função, ela dará a saída de um elemento B.</p><p id="ea585226-5b65-405e-9b27-e55c901cf2ad" class="">Definição formal: As funções, ou sub-rotinas, são blocos de instruções que realizam tarefas específicas. </p><p id="a6b5af82-2b7d-4c9c-accf-ffdfbccdf790" class="">
+</p><p id="37f290fc-562c-458d-957b-a60ffc011ebc" class="">Vantagens:</p><ul id="3ee123fe-03a9-4a20-a735-32137f755c14" class="bulleted-list"><li style="list-style-type:disc">Modularização do problema</li></ul><ul id="3c822c2f-5334-4d34-a1ec-1c7589409760" class="bulleted-list"><li style="list-style-type:disc">Código mais claro e conciso</li></ul><ul id="db5d60a5-ccfd-44e1-8525-6740f95123b2" class="bulleted-list"><li style="list-style-type:disc">Reutilização de instruções</li></ul><p id="ef59b742-f734-4e7d-9735-b7fa64638f48" class="">
+</p><p id="95269fac-d7f2-4b5f-ad21-82866d260e02" class=""><strong>Instruções de Entrada e Saída</strong></p><p id="753e252e-ecc6-4799-9826-de4c77610f23" class="">
+</p><p id="7def0a13-576a-42db-b42c-41a69559b62f" class="">Definição formal: Consiste na impressão dos dados do mundo abstrato, digital por meio de ação de alguma interface.</p><p id="e2f79c93-569c-4ba2-b049-a82c012bd0a0" class="">Os formatos podem variar desde simples arquivos binários até complexas querys de banco de dados.</p><p id="b5684a01-2041-4c6e-a6a3-e4cfdb68ea8c" class="">
+</p><p id="63425c2d-334f-439d-8831-8cebcd3c4964" class="">Existem dois tipos de saídas dentro de um programa:</p><ul id="02839377-979e-4513-8d52-7077e6f4280a" class="bulleted-list"><li style="list-style-type:disc">Saída programada<ul id="86aa3ba6-8755-4e17-9246-773bcd4c02a5" class="bulleted-list"><li style="list-style-type:circle">Condicional<ul id="4e06d0dc-ccaa-48e9-be4c-cbbd502e0023" class="bulleted-list"><li style="list-style-type:square">Normalmente aguarda o dispositivo disparar a condição</li></ul></li></ul><ul id="08e2fc12-e131-4d3f-9c1c-a49eaa824c72" class="bulleted-list"><li style="list-style-type:circle">Incondicional</li></ul></li></ul><ul id="8f0674c2-a381-4bcb-9beb-277b64e5d63d" class="bulleted-list"><li style="list-style-type:disc">Saída por interrupção<ul id="2c191e1c-dc52-498d-8a24-89ccadf739da" class="bulleted-list"><li style="list-style-type:circle">Geralmente definida pelos periféricos</li></ul></li></ul><p id="b2b48ba7-8154-4d66-bd25-d0ac5146321b" class="">
+</p><p id="f4c5966d-65f2-4c8a-a5aa-09f77746d8e9" class=""><strong>Aula 4 Linguagens de Programação</strong></p><p id="bad6af62-3fe7-49ba-91c9-10917b92beb3" class="">
+</p><p id="d559146e-f21e-42a6-a708-5cf84aa1f18b" class="">O que é uma linguagem de programação ?</p><p id="4e1bcee0-0af7-47ec-bbf8-f9c36facf735" class="">Método padronizado composto por um conjunto de regras sintáticas e semânticas de implementação de um código fonte. [Conjunto de palavras e regras]</p><p id="bbdeb8fa-6add-4211-844a-a45fd840e690" class="">
+</p><p id="af65a480-0ebc-4485-a5db-1e972ecd72a8" class="">Como o computador entende o programa</p><p id="a5733fc4-ae0b-412e-8523-b550dbd3397e" class="">
+</p><p id="c3dab253-e0a4-4dba-be61-bf62c584127a" class="">&gt; Programa Fonte - Linguagem de Alto Nível Ex: Python</p><p id="efd9192b-617c-4eba-a798-70fe8a142123" class="">&gt; Compilador - Executa analise do programa</p><p id="893c4498-61a2-4ae3-aae3-1ca665413d6e" class="">&gt; Programa Objeto - Linguagem de Baixo Nível Ex: Assembly</p><p id="4363e71b-2579-4571-8291-6c181eef99a5" class="">&gt; Resultado: Linguagem de máquina que o computador entende.</p><p id="84152002-0aec-4bed-9239-91c34373bd24" class="">
+</p><p id="6c0d05fe-11db-4131-95ea-c35651879ea5" class="">Análise léxica</p><p id="995f8649-69bc-401d-a8b1-31eaf7bcf806" class="">
+</p><p id="1846396d-fd65-4af8-971a-4118f0244e11" class="">É a primeira fase do processo de compilação. Entre suas funções está ler o código fonte e ler caractere por caractere, para fazer o processo a seguir:</p><p id="b0dae31a-5886-48e3-817a-697f6ceb4e20" class="">Particionar &gt; Classificar &gt; Eliminar</p><p id="a54c31e7-f6b5-434b-a2fd-8133dade016b" class="">
+</p><p id="a9cde986-3762-4a19-8f78-ba7a0f395528" class="">Análise sintática</p><p id="59055015-3289-4168-bebb-f64407d573cf" class="">
+</p><p id="f95db29f-0506-4b79-af41-2ed5f2391bd6" class="">Sintaxe: “componente do sistema linguístico que interligam os constituintes da sentença, atribuindo-lhe uma estrutura”</p><p id="1ecae0b6-cbab-4dc6-8cfd-212f839ee247" class="">
+</p><p id="68f3430e-80b1-45fa-b8f1-2507925b5e10" class="">Análise semântica</p><p id="eed4fbb2-8e9a-43e9-9a2f-e9ed946cd0df" class="">
+</p><p id="75099ba1-0ef2-442f-bf7c-5caea0fdf136" class="">Semântica: “É o estudo do significado. Incide sobre a relação entre os significantes, como: palavras, frases, sinais e símbolos”</p><p id="93a9418d-4866-4155-914a-aa66b5047e91" class="">
+</p><p id="8b748039-d0f6-47e9-8417-038d6b210316" class=""><strong>Paradigmas de programação</strong></p><p id="2399175e-5f78-49ca-80d2-e3660f414599" class="">
+</p><p id="895ec5d6-9193-4bef-ad0b-87b05dfe567d" class="">Forma de resolução de problemas com diretrizes e limitações específicas de cada paradigma utilizando linguagem de programação.</p><p id="a0a37a37-0e33-40a4-a17d-f15c103287ca" class="">
+</p><p id="6dd55a30-829e-4a72-86c9-59a4e1e6140c" class="">Classificação:</p><ul id="fcda9cce-cc74-4d4d-a16c-6178cc92dd1c" class="toggle"><li><details open=""><summary>Orientação à Objeto</summary><p id="901d1dc4-9156-4d6d-b039-0d219a0886f2" class="">Paradigma de programação baseado na utilização de objetos e suas interações</p><p id="edd4e81e-e946-49b1-be79-c070c7493c60" class="">Pilares da Orientação a Objetos</p><ul id="f1e3ea7e-2454-40d4-be4b-8f474ddd788b" class="bulleted-list"><li style="list-style-type:disc">Herança<ul id="2e4d117f-6e03-43b9-90e5-f4dabd79a952" class="bulleted-list"><li style="list-style-type:circle">Classe filha herda os comportamentos e estados de uma classe mãe.</li></ul></li></ul><p id="c4566c75-e0d2-404b-a2ac-2b8b9b910224" class="">Reuso de código</p></details></li></ul><ul id="65b1da9e-63be-4f29-af02-5a5a892a92f5" class="toggle"><li><details open=""><summary>Procedural</summary><p id="b29169d2-837f-4b49-9eee-1ec4f25a7600" class="">Chamadas sucessivas e procedimentos separados</p></details></li></ul><ul id="fcaf7f44-5729-443f-b735-a340aa74aaba" class="toggle"><li><details open=""><summary>Funcional</summary><p id="488f44c5-d083-44ce-ba43-c7cd3756af30" class="">Instruções são baseadas em funções</p></details></li></ul><ul id="6159f4d0-189a-4f53-b7fb-eecb17e0a580" class="toggle"><li><details open=""><summary>Estruturado</summary><p id="1129f3d9-e6d7-4c14-9d3b-69dd155da038" class="">Estrutura de blocos aninhados</p><p id="7d1dc25d-b0aa-4af7-99be-595db7323c21" class="">Exemplo de linguagem: C<div class="indented"><p id="d5da1a30-4928-4a2d-a797-5c88ddd984e4" class="">Conceitos</p><ul id="dcce4b6b-460c-42b4-ab58-24ff39ae4540" class="bulleted-list"><li style="list-style-type:disc">Sequência</li></ul><ul id="5267a8e5-c735-4e02-937c-268c5ec432b3" class="bulleted-list"><li style="list-style-type:disc">Decisão</li></ul><ul id="059e1de2-6ba5-4b03-90ec-9f53ba0cd475" class="bulleted-list"><li style="list-style-type:disc">Iteração</li></ul><p id="73215023-46a2-4cf3-8a40-392656a354ce" class="">Utilização</p><ul id="c58e31b2-6361-4981-89fb-1d3b1e825dae" class="bulleted-list"><li style="list-style-type:disc">Problemas simples e diretos</li></ul><ul id="fe812ba4-0a61-412a-8833-6b65fe649a31" class="bulleted-list"><li style="list-style-type:disc">Aprender programação</li></ul></div></p></details></li></ul><ul id="00e7e4e2-c972-4435-a6ec-110b2ee69c26" class="toggle"><li><details open=""><summary>Computação distribuída</summary><p id="31ef26c9-4ae0-42cb-afe9-54351de62c9d" class="">Funções executadas de forma independente</p></details></li></ul><ul id="75b7eddc-a628-4723-a5a5-5eca8bedc5b1" class="toggle"><li><details open=""><summary>Lógico</summary></details></li></ul><p id="2bbf3410-0e77-4748-9394-de848e425e7d" class="">
+</p><p id="b5844cdb-5b52-4b0b-bcc3-f5127c95c037" class="">
+</p></div></article></body></html>
