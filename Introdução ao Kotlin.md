@@ -147,3 +147,42 @@ fun main() {
         - “padrão ${valor}”.format(valor)
 - Pode ser concatena com plus/+;
 - Também é tratada como um array de Char;
+
+**Empty x Blank**
+
+Empty e blank são métodos de comparação
+
+- String está vazia (empty), em branco (blank) ou é nula (null) ?
+
+Se o tamanho da string (variável.length) for 0 está empty e blank;
+
+Se o tamanho for > 0 mas todos os caracteres são espaços em branco, está blank mas não empty.
+
+### Funções
+
+Funções no Kotlin são estabelecidas pelo prefixo fun, de function.
+
+- Prefixo **Fun nomeDaFunção(nome:Tipo):TipoRetorno{}**
+- Funções anônimas, single-line, inline, extensões, Lambdas, ordem superior;
+
+3 exemplos da mesma função:
+
+```kotlin
+private fun getFullName(name:String, lastName:String):String{
+		val fullname = "$name $lastName"
+		return fullname
+}
+
+private fun getFullName(name:String, lastName:String):String{
+		return "$name $lastName"
+}
+
+private fun getFullName(name:String, lastName:String) = "$name $lastName"
+
+```
+
+**Funções de ordem superior**
+
+Recebem outra função ou lambda por parâmetro;
+
+Bastante úteis para a generalização de funções e tratamento de erros.
