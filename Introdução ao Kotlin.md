@@ -186,3 +186,29 @@ private fun getFullName(name:String, lastName:String) = "$name $lastName"
 Recebem outra função ou lambda por parâmetro;
 
 Bastante úteis para a generalização de funções e tratamento de erros.
+
+**Funções single-line**
+
+Prefixo Fun nomeDaFuncao(nome:Tipo) = retorno;
+
+- Função de uma única linha;
+- Infere o tipo de retorno;
+
+Funções / extensões
+
+Prefixo Fun Tipo.nomeDaFuncao();
+
+Cria uma função que só pode ser chamada por um tipo específico, cujo o valor pode ser referenciado dentro da função através da palavra **this**.
+
+Ex.:
+
+```kotlin
+fun String.randomCapitalizedLetter() =
+	this[(0..this.length-1).random()].toUpperCase()
+```
+
+### Estruturas de controle
+
+- if/else, when, elvis operator;
+- Pode ser utilizado tanto para controle quanto para atribuição;
+- Pode ser encadeado com múltiplas estruturas;
